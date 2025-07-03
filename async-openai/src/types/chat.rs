@@ -348,6 +348,9 @@ pub struct ChatCompletionRequestAssistantMessage {
     #[deprecated]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub function_call: Option<FunctionCall>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub prefix: Option<bool>,
 }
 
 /// Tool message
@@ -816,6 +819,13 @@ pub struct CreateChatCompletionRequest {
     #[deprecated]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub functions: Option<Vec<ChatCompletionFunctions>>,
+
+    /// Assistant Prefill for vLLM
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub continue_final_message: Option<bool>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub add_generation_prompt: Option<bool>,
 }
 
 /// Options for streaming response. Only set this when you set `stream: true`.
